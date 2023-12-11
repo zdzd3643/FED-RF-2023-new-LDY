@@ -7,7 +7,6 @@ import { banData } from "../data/banner";
 import "../../css/banner.css";
 
 import { useEffect } from "react";
-
 // 제이쿼리 + 제이쿼리UI
 import $ from "jquery";
 import "jquery-ui-dist/jquery-ui";
@@ -39,10 +38,10 @@ export function Banner(props) {
     const sldBox = $(tg).siblings(".slider");
     // (2) 슬라이드 블릿 : 형제요소는 .indic임!
     const indic = $(tg).siblings('.indic').find('li');
-    console.log('블릿:',indic);
+    // console.log('블릿:',indic);
     // (3) 슬라이드 개수
     const sCnt = sldBox.find('li').length;
-    console.log('슬라이드개수:',sCnt);
+    // console.log('슬라이드개수:',sCnt);
   
     // 3. 기능구현
       // 0. 광클금지 /////////////
@@ -85,7 +84,7 @@ export function Banner(props) {
         if(sNum<0) sNum=sCnt-1;
       } /////// else /////////
   
-      console.log('슬라이드 순번:',sNum);
+      console.log('슬순번:',sNum);
   
       // 블릿해당순번 클래스'on'넣기(다른li는 제거)
       indic.eq(sNum).addClass('on')
@@ -106,10 +105,11 @@ export function Banner(props) {
   // 리스트만들기 함수 ///////////
   const makeList = (data) => {
     // console.log(data);
+    // console.log(process.env.PUBLIC_URL);
     return data.map((v, i) => (
       <li key={i}>
         {/* 배너이미지 */}
-        <img src={v.src} alt="ㅎㅎ" />
+        <img src={process.env.PUBLIC_URL+v.src} alt="ㅎㅎ" />
         {/* 배너 정보 */}
         <section className="bantit">
           <h3>{v.tit1}</h3>

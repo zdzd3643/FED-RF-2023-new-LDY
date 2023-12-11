@@ -61,11 +61,12 @@ export function SwiperCat() {
                   facts: v.facts,
                 }}
                 >
-                  {/* 라우터 데이터 전달은 state 속성에 객체로 보낸다! */}
+                  {/* 라우터 데이터 전달은 
+                  state속성에 객체로 보낸다! */}
                 <section className="sw-inbox2">
                   {/* 캐릭터이미지영역 */}
                   <div className="cat-img2">
-                    <img src={v.tmsrc} alt={v.cname} />
+                    <img src={process.env.PUBLIC_URL+v.tmsrc} alt={v.cname} />
                   </div>
                   {/* 캐릭터타이틀영역 */}
                   <div className="cat-tit2">
@@ -78,4 +79,4 @@ export function SwiperCat() {
       </Swiper>
     </>
   );
-} /////////// SwiperCat 컴포넌트 ///////////
+} /////////// SwiperApp 컴포넌트 ///////////

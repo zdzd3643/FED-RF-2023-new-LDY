@@ -15,7 +15,7 @@ import { useRef } from "react";
 import { useEffect } from "react";
 
 // 캐릭터 리스트 데이터 가져오기
-import { catListData } from "../data/swiper_cat";
+import { catListData } from "../data/swiper_cat.js";
 
 // 최초 원본 데이터 정렬변경하기(오름차순)
 // 주의사항 : 컴포넌트에 포함시키지 말것!
