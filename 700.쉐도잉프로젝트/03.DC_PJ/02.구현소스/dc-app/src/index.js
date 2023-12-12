@@ -57,13 +57,13 @@ import { Login } from "./components/pages/Login";
 export default function App() {
   return (
     /* basename속성은 package.json의 "homepage"속성값을 읽어옴 */
-    <BrowserRouter basename={process.env.PUBLIC_URL}>
-    {/* <BrowserRouter> */}
+    // <BrowserRouter basename={process.env.PUBLIC_URL}>
+    // {/* basename 을 안써도 HashRouter는 package.json의 homepage 속성값을 
+    // 자동으로 연결함 */}
+    // {/* <BrowserRouter> */}
     
-    {/* basename 을 안써도 HashRouter는 package.json의 homepage 속성값을 
-    자동으로 연결함 */}
-    {/* <HashRouter> */}
-      <Routes>
+  <HashRouter>
+    <Routes>
         {/* 중요!!! 레이아웃 컴포넌트를 루트로 설정! */}
         <Route path="/" element={<Layout />}>
           {/* 하위 라우트 셋팅 
@@ -84,9 +84,9 @@ export default function App() {
           <Route path="login" element={<Login />} />
         </Route>
       </Routes>
-      {/* </HashRouter> */}
-    </BrowserRouter>
+      </HashRouter>
   );
+    // </BrowserRouter>
 } ///////////// App 컴포넌트 ///////////////////
 
 // 컴포넌트 출력 //////////
