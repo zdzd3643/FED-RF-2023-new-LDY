@@ -87,14 +87,14 @@ export function dragBanner() {
     // diff가 양수면 2, diff가 음수면 0, 모두아니면 1
     // 선택순번의 클래스
     let selCls = slide.find("li").eq(selSeq).attr("class");
-    // console.log('클래스명:',selCls);
+    console.log('클래스명:',selCls);
 
     // 해당 슬라이드 순번 : 클래스명의 숫자 - 1
     // -> 슬라이드 순번은 클래스명의 숫자 - 1
     // Number() 숫자형변환 : 문자를 잘라서 문자형숫자임
     // 그런데 요즘 브라우저는 이렇게 안해도 자동형변환하여 계산함!
     let indicSeq = Number(selCls.substr(3)) - 1;
-    // console.log('블릿순번:',indicSeq);
+    console.log('블릿순번:',indicSeq);
 
     // 해당순번 블릿 클래스 'on'넣기/ 나머지는 빼기
     indic.eq(indicSeq).addClass("on").siblings().removeClass("on");
