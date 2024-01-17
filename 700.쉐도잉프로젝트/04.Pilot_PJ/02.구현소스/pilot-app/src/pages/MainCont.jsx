@@ -1,6 +1,6 @@
 // 메인 페이지 컨텐츠 컴포넌트
 
-import { useEffect } from "react";
+import { useEffect, useLayoutEffect } from "react";
 import { Banner } from "../modules/Banner";
 
 // 자동스크롤 JS 불러오기
@@ -19,26 +19,30 @@ export function MainCont() {
     // 랜더링 후 한번만 적용!
     // console.log("랜더링OK!");
     
-    // 스크롤바 없애기
-    $('html,body').css({overflow:'hidden'});
+    if($(window).width()>800) {
 
-    // (((중요!!!))) /////////////////////////////
-    // 특정이벤트를 설정해제하고자 할때
-    // 반드시 그 이벤트 설정은 JS파일 내부에서 하지 말고
-    // 리액트 함수에서 JS함수를 호출하는 형태로해야
-    // 해제 메서드인 removeEventListener 가 유효함!
+      // 스크롤바 없애기
+      $('html,body').css({overflow:'hidden'});
+  
+      // (((중요!!!))) /////////////////////////////
+      // 특정이벤트를 설정해제하고자 할때
+      // 반드시 그 이벤트 설정은 JS파일 내부에서 하지 말고
+      // 리액트 함수에서 JS함수를 호출하는 형태로해야
+      // 해제 메서드인 removeEventListener 가 유효함!
+  
+      // 자동스크롤 이벤트 설정하기 /////
+      window.addEventListener('wheel',wheelFn);
+  
+      // 메뉴+인디케이터 이벤트 기능설정함수 호출 ////
+      evtFn();
+  
+      // 초기화 함수 호출 
+      initSet();
+  
+      // 페이지번호 초기화 호출
+      zeroPno();
+    } //////////// 모바일 아닐때만 실행 /////////
 
-    // 자동스크롤 이벤트 설정하기 /////
-    window.addEventListener('wheel',wheelFn);
-
-    // 메뉴+인디케이터 이벤트 기능설정함수 호출 ////
-    evtFn();
-
-    // 초기화 함수 호출
-    initSet();
-
-    // 페이지번호 초기화 호출
-    zeroPno();
 
     //드래그배너 호출
     dragBanner();
@@ -60,6 +64,12 @@ export function MainCont() {
     });////////// 소멸자 return //////
   }, []); /////// useEffect ///////////
 
+  // 처음 로딩시 스크롤 상단이동 //////
+  useLayoutEffect(() => {
+    window.scrollTo(0, 0);
+  }, []); ///// useLayoutEffect //////////
+
+  // 리턴 코드 /////////////////////
   return (
     <>
       {/* 1. 배너 페이지 */}
@@ -73,17 +83,17 @@ export function MainCont() {
 
       {/* 2. 남성패션 페이지 */}
       <section className="page">
-        <FashionIntro cat="men" />
+        <FashionIntro cat="men" subcat="etc" />
       </section>
 
       {/* 3. 여성패션 페이지 */}
       <section className="page">
-        <FashionIntro cat="women" />
+        <FashionIntro cat="women" subcat="etc" />
       </section>
 
       {/* 4. 스타일패션 페이지 */}
       <section className="page">
-        <FashionIntro cat="style" />
+        <FashionIntro cat="style" subcat="etc" />
       </section>
 
       {/* 메인에만 나오는 사이드 인디케이터 */}
